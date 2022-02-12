@@ -31,36 +31,42 @@ public class PlayerMovement : MonoBehaviour
         // Reduce velocity for mid-air movement
         if (!isGrounded)
         {
-            if (inSprint){
-                speed -=0.75f;
-            } else {
-                speed -=1.25f;
+            if (inSprint)
+            {
+                speed -= 0.75f;
             }
-            if (speed<=8f) speed = 8f;
-        //Crouching
-        } else if (Input.GetButton("Crouch"))
+            else
+            {
+                speed -= 1.25f;
+            }
+
+            if (speed <= 8f) speed = 8f;
+        }
+        // Crouching
+        else if (Input.GetButton("Crouch"))
         {
             speed = 4f;
-
-
-
-        //Jumping
-        //Check if stop sprinting, if so slow down the player with min speed of 12
-        } else if (Input.GetButtonUp("Sprint") || outSprint){
+        }
+        // Check if sprint is released, if so, slow down the player with min speed of 12
+        else if (Input.GetButtonUp("Sprint") || outSprint)
+        {
             inSprint = false;
             outSprint = true;
             speed -= 0.05f;
-            if (speed<=12f){
+            if (speed <= 12f){
                 outSprint = false;
                 speed = 12f;
             }
-        //If currently sprinting, increase the speed with max speed of 20
-        } else if (Input.GetButton("Sprint"))
+        
+        }
+        // If currently sprinting, increase the speed with max speed of 20
+        else if (Input.GetButton("Sprint"))
         {
             inSprint = true;
             speed += 1f;
-            if (speed>20f) speed = 20f;
-        } else
+            if (speed > 20f) speed = 20f;
+        } 
+        else
         {
             speed = 12f;
         }
@@ -76,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
+        // Gravity
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
