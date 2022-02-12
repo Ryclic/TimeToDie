@@ -18,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     bool inSprint = false;
 
     Vector3 velocity;
+
     bool isGrounded;
+    bool isMoving = false;
 
     void Update()
     {
@@ -28,23 +30,27 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2f;
         }
-        // Reduce velocity for mid-air movement
-        if (!isGrounded)
+
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        Vector3 move = transform.right * x + transform.forward * z;
+        
+        //check to see if character is moving, if not can't accelerate
+        if (move.x==0 && move.z==0)
         {
-            if (inSprint){
-                speed -=0.75f;
-            } else {
-                speed -=1.25f;
-            }
-            if (speed<=8f) speed = 8f;
+            isMoving = false;
+        } else 
+        {
+            isMoving = true;
+        }
+
         //Crouching
-        } else if (Input.GetButton("Crouch"))
+        if (Input.GetButton("Crouch"))
         {
             speed = 4f;
 
-
-
-        //Jumping
+        //Sprinting
         //Check if stop sprinting, if so slow down the player with min speed of 12
         } else if (Input.GetButtonUp("Sprint") || outSprint){
             inSprint = false;
@@ -55,25 +61,29 @@ public class PlayerMovement : MonoBehaviour
                 speed = 12f;
             }
         //If currently sprinting, increase the speed with max speed of 20
-        } else if (Input.GetButton("Sprint"))
+        } else if (Input.GetButton("Sprint") && isMoving)
         {
             inSprint = true;
-            speed += 1f;
+            speed += 0.1f;
             if (speed>20f) speed = 20f;
         } else
         {
             speed = 12f;
         }
-        // WASD Movement
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * x + transform.forward * z;
-        
+        // WASD Movement
+        x = Input.GetAxis("Horizontal");
+        z = Input.GetAxis("Vertical");
+        move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
+
         // Jumping
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
+            //determine jumpHeight using current speed
+            jumpHeight = speed/3f;
+            if (jumpHeight>=5f) jumpHeight = 5f;
+            speed /= 2f;
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
 
