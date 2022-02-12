@@ -16,11 +16,12 @@ public class PlayerMovement : MonoBehaviour
 
     bool outSprint = false;
     bool inSprint = false;
+    bool inSlide = false;
 
     Vector3 velocity;
 
     bool isGrounded;
-    bool isMoving = false;
+    bool isMoving;
 
     void Update()
     {
@@ -37,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
         
         //check to see if character is moving, if not can't accelerate
-        if (move.x==0 && move.z==0)
+        if ((move.x==0 && move.z==0) || !isGrounded) 
         {
             isMoving = false;
         } else 
@@ -48,7 +49,15 @@ public class PlayerMovement : MonoBehaviour
         //Crouching
         if (Input.GetButton("Crouch"))
         {
-            speed = 4f;
+            if ((speed>=18f || inSlide) && isMoving)
+            {
+                inSlide = true;
+                speed/=1.005f;
+
+            } else {
+                inSlide = false;
+                speed = 4f;
+            }
 
         //Sprinting
         //Check if stop sprinting, if so slow down the player with min speed of 12
@@ -56,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
             inSprint = false;
             outSprint = true;
             speed -= 0.05f;
-            if (speed <= 12f){
+            if (speed <= 12f && isGrounded){
                 outSprint = false;
                 speed = 12f;
             }
@@ -68,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
             if (speed>20f) speed = 20f;
         } else
         {
+            inSlide = false;
             speed = 12f;
         }
 
