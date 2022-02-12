@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
             inSprint = false;
             outSprint = true;
             speed -= 0.05f;
-            if (speed<=12f){
+            if (speed <= 12f){
                 outSprint = false;
                 speed = 12f;
             }
@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             speed /= 2f;
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-
+        // Gravity
         velocity.y += gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
