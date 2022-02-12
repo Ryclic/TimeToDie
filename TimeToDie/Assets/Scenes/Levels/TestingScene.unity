@@ -448,7 +448,7 @@ GameObject:
   - component: {fileID: 721622304}
   - component: {fileID: 721622303}
   - component: {fileID: 721622302}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,11 +525,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721622301}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.34460616, y: 3.7294283, z: -3.5428004}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5115725, y: -8.44764, z: 4.5490108}
   m_LocalScale: {x: 100, y: 1, z: 100}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2000521177}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
@@ -656,7 +656,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607400493}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.78, y: 18.37, z: -7.94}
+  m_LocalPosition: {x: 2.78, y: 20.93, z: -7.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 963194228}
@@ -676,7 +676,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 3.7
+  m_Height: 3.8
   m_Radius: 0.6
   m_SlopeLimit: 45
   m_StepOffset: 0.7
@@ -697,9 +697,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1607400495}
   speed: 12
-  gravity: -9.81
+  gravity: -30
+  jumpHeight: 5
   groundCheck: {fileID: 616845353}
-  groundDistance: 0
+  groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -813,6 +814,7 @@ Transform:
   m_Children:
   - {fileID: 420971472}
   - {fileID: 490004393}
+  - {fileID: 721622305}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
