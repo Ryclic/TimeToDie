@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public CharacterController controller;
-
+    // Movement variables
     public float speed = 12f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
-
+    
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -37,11 +37,12 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
         
-        //check to see if character is moving, if not can't accelerate
-        if ((move.x==0 && move.z==0) || !isGrounded) 
+        // Check to see if character is moving, if not can't accelerate
+        if ((move.x == 0 && move.z == 0) || !isGrounded) 
         {
             isMoving = false;
-        } else 
+        } 
+        else 
         {
             isMoving = true;
         }
@@ -49,33 +50,40 @@ public class PlayerMovement : MonoBehaviour
         //Crouching
         if (Input.GetButton("Crouch"))
         {
-            if ((speed>=18f || inSlide) && isMoving)
+            if ((speed >= 18f || inSlide) && isMoving)
             {
                 inSlide = true;
-                speed/=1.005f;
+                speed /= 1.005f;
 
-            } else {
+            } 
+            else 
+            {
                 inSlide = false;
                 speed = 4f;
             }
 
         //Sprinting
         //Check if stop sprinting, if so slow down the player with min speed of 12
-        } else if (Input.GetButtonUp("Sprint") || outSprint){
+        } 
+        else if (Input.GetButtonUp("Sprint") || outSprint)
+        {
             inSprint = false;
             outSprint = true;
             speed -= 0.05f;
-            if (speed <= 12f && isGrounded){
+            if (speed <= 12f && isGrounded)
+            {
                 outSprint = false;
                 speed = 12f;
             }
         //If currently sprinting, increase the speed with max speed of 20
-        } else if (Input.GetButton("Sprint") && isMoving)
+        } 
+        else if (Input.GetButton("Sprint") && isMoving)
         {
             inSprint = true;
             speed += 0.1f;
-            if (speed>20f) speed = 20f;
-        } else
+            if (speed > 20f) speed = 20f;
+        } 
+        else
         {
             inSlide = false;
             speed = 12f;
@@ -92,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //determine jumpHeight using current speed
             jumpHeight = speed/3f;
-            if (jumpHeight>=5f) jumpHeight = 5f;
+            if (jumpHeight >= 5f) jumpHeight = 5f;
             speed /= 2f;
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
