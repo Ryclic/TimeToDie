@@ -5,6 +5,7 @@ using UnityEngine;
 public class InteractText : MonoBehaviour
 {
     Camera cameraToLookAt;
+
     void Start()
     {
         cameraToLookAt = Camera.main;
@@ -15,6 +16,5 @@ public class InteractText : MonoBehaviour
     {
         transform.LookAt(cameraToLookAt.transform);
         transform.rotation = Quaternion.LookRotation(cameraToLookAt.transform.forward);
-
     }
 }
