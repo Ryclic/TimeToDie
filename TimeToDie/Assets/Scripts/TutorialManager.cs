@@ -5,8 +5,8 @@ using UnityEngine;
 public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
-    private int popUpIndex;
-
+    private int popUpIndex = 0;
+    
     void Update()
     {
         for (int i = 0; i < popUps.Length; i++)
@@ -17,15 +17,25 @@ public class TutorialManager : MonoBehaviour
             }
             else
             {
-                popUps[popUpIndex].SetActive(false);
+                popUps[i].SetActive(false);
             }
         }       
+
         if(popUpIndex == 0)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            Debug.Log("first one!");
+            if (Input.GetKeyDown(KeyCode.W))
             {
-                //popUpIndex++;
+                popUpIndex++;
             }
+
+
         }
+        else if(popUpIndex == 1)
+        {
+            Debug.Log("second one!");
+        }
+
+        
     }
 }
