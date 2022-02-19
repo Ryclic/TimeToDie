@@ -11,6 +11,7 @@ public class TypeWriter : MonoBehaviour
 
     void OnEnable()
     {
+        fullText = fullText.Replace("NEWLINE", "\n");
         StartCoroutine(ShowText());
     }
 

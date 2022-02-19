@@ -6,6 +6,7 @@ public class TutorialManager : MonoBehaviour
 {
     public GameObject[] popUps;
     private int popUpIndex = 0;
+    public GameObject player;
     
     void Update()
     {
@@ -23,19 +24,22 @@ public class TutorialManager : MonoBehaviour
 
         if(popUpIndex == 0)
         {
-
-            if (Input.GetKeyDown(KeyCode.W))
+            // Walk to the yellow area
+            if(player.transform.position.z >= 16)
             {
                 popUpIndex++;
             }
-
-
         }
         else if(popUpIndex == 1)
         {
-
+            // Jump over box
+            if(player.transform.position.z >= 28)
+            {
+                popUpIndex++;
+            }
         }
 
         
     }
+    
 }
