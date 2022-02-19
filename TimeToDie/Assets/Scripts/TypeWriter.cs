@@ -9,7 +9,7 @@ public class TypeWriter : MonoBehaviour
     public string fullText;
     private string currentText = "";
 
-    void Start()
+    void OnEnable()
     {
         StartCoroutine(ShowText());
     }

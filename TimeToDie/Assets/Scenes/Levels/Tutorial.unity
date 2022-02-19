@@ -2714,7 +2714,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -473, y: 465}
+  m_AnchoredPosition: {x: -831, y: 465}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642122056
@@ -2729,8 +2729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ce7f11c1c5296448547701af26bb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.1
-  fullText: whatkdjfaklsdklf
+  delay: 0.05
+  fullText: Nice! Use the spacebar to jump over this next obstacle!
 --- !u!114 &1642122057
 MonoBehaviour:
   m_ObjectHideFlags: 0

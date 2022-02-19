@@ -23,7 +23,7 @@ public class TutorialManager : MonoBehaviour
 
         if(popUpIndex == 0)
         {
-            Debug.Log("first one!");
+
             if (Input.GetKeyDown(KeyCode.W))
             {
                 popUpIndex++;
@@ -33,7 +33,7 @@ public class TutorialManager : MonoBehaviour
         }
         else if(popUpIndex == 1)
         {
-            Debug.Log("second one!");
+
         }
 
         
