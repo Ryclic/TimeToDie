@@ -7,7 +7,7 @@ public class TutorialManager : MonoBehaviour
     public GameObject[] popUps;
     private int popUpIndex = 0;
     public GameObject player;
-    
+
     void Update()
     {
         for (int i = 0; i < popUps.Length; i++)
@@ -37,6 +37,17 @@ public class TutorialManager : MonoBehaviour
             {
                 popUpIndex++;
             }
+        }
+        else if(popUpIndex == 2)
+        {
+            // Check if player in sprint
+            if(player.GetComponent<PlayerMovement>().speed >= 15){
+                popUpIndex++;
+            }
+        }
+        else if(popUpIndex == 3)
+        {
+
         }
 
         
