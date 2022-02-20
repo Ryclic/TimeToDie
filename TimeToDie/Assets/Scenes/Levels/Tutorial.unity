@@ -335,8 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ce7f11c1c5296448547701af26bb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
-  fullText: Use the WASD keys to move around!NEWLINETry advnacing to the yellow area!
+  delay: 0.04
+  fullText: Use the WASD keys to move around!NEWLINETry advancing to the yellow area!
 --- !u!114 &338155277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ce7f11c1c5296448547701af26bb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
+  delay: 0.03
   fullText: Great! Try sprinting with the left shift key!
 --- !u!114 &1623653414
 MonoBehaviour:
@@ -2702,8 +2702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ce7f11c1c5296448547701af26bb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
-  fullText: '                                        Good job!NEWLINENow use the
+  delay: 0.02
+  fullText: '                                        Good job!NEWLINE Now use the
     spacebar to jump over this obstacle!'
 --- !u!114 &1642122057
 MonoBehaviour:
@@ -2896,9 +2896,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09ce7f11c1c5296448547701af26bb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0.05
-  fullText: Fabulous! You can crouch by pressing the control buttonNEWLINE                     
-    Try crouching under this obstacle!
+  delay: 0.1
+  fullText: 
 --- !u!114 &1862125819
 MonoBehaviour:
   m_ObjectHideFlags: 0
