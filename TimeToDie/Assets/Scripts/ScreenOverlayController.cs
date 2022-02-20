@@ -8,6 +8,7 @@ public class ScreenOverlayController : MonoBehaviour
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
     public GameObject settingsMenuUI;
+    public GameObject popup;
 
 
     void Start()
@@ -33,11 +34,13 @@ public class ScreenOverlayController : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(false);
+        popup.SetActive(false);
     }
 
     public void Resume() 
     {
         DisableAllUI();
+        popup.SetActive(true);
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.visible = false;
