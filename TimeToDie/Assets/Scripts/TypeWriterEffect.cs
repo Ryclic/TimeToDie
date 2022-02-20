@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TypeWriter : MonoBehaviour
+public class TypeWriterEffect : MonoBehaviour
 {
     public float delay = 0.1f;
     public string fullText;
@@ -11,6 +11,7 @@ public class TypeWriter : MonoBehaviour
 
     void OnEnable()
     {
+        fullText = fullText.Replace("NEWLINE", "\n");
         StartCoroutine(ShowText());
     }
 
