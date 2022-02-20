@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenuController : MonoBehaviour
+public class ScreenOverlayController : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject settingsMenuUI;
+
 
     void Start()
     {
-        pauseMenuUI.SetActive(false);
+        DisableAllUI();
     }
 
     void Update()
@@ -27,17 +29,24 @@ public class PauseMenuController : MonoBehaviour
         }
     }
 
-    public void Resume() 
+    void DisableAllUI()
     {
         pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(false);
+    }
+
+    public void Resume() 
+    {
+        DisableAllUI();
         Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void Pause() 
+    public void Pause() 
     {
+        DisableAllUI();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -47,7 +56,12 @@ public class PauseMenuController : MonoBehaviour
 
     public void LoadSettings()
     {
-        Debug.Log("SETTINGS");
+        DisableAllUI();
+        settingsMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameIsPaused = true;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void LoadMenu()
@@ -55,4 +69,5 @@ public class PauseMenuController : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("Main Menu");
     }
+
 }
