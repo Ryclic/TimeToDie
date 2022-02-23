@@ -90,8 +90,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // WASD Movement
-        x = Input.GetAxis("Horizontal");
-        z = Input.GetAxis("Vertical");
+        x = 0;
+        z = 0;
+        float zAffect = 1;
+        if (InputManager.instance.GetKey(KeybindingActions.Right) ||InputManager.instance.GetKey(KeybindingActions.Left) ||Input.GetAxis("Horizontal")!=0f)
+        {
+            x = Input.GetAxis("Horizontal");
+        }
+        if (InputManager.instance.GetKey(KeybindingActions.Forward) || InputManager.instance.GetKey(KeybindingActions.Backward) || Input.GetAxis("Vertical")!=0f)
+        {
+            z = Input.GetAxis("Vertical");
+        }
+
         move = transform.right * x + transform.forward * z;
         controller.Move(move * speed * Time.deltaTime);
 
