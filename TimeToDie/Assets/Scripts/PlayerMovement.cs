@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Crouching
-        if (Input.GetButton("Crouch"))
+        if (InputManager.instance.GetKey(KeybindingActions.Crouch))
         {
             if ((speed >= 18f || inSlide) && isMoving)
             {
@@ -65,8 +65,8 @@ public class PlayerMovement : MonoBehaviour
         //Sprinting
         //Check if stop sprinting, if so slow down the player with min speed of 12
         } 
-        else if (Input.GetButtonUp("Sprint") || outSprint)
-        {
+        else if (InputManager.instance.GetKeyUp(KeybindingActions.Sprint) || outSprint)
+        { 
             inSprint = false;
             outSprint = true;
             speed -= 0.05f;
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
             }
         //If currently sprinting, increase the speed with max speed of 20
         } 
-        else if (Input.GetButton("Sprint") && isMoving)
+        else if (InputManager.instance.GetKey(KeybindingActions.Sprint) && isMoving)
         {
             inSprint = true;
             speed += 0.1f;
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * speed * Time.deltaTime);
 
         // Jumping
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if(InputManager.instance.GetKeyDown(KeybindingActions.Jump) && isGrounded)
         {
             //determine jumpHeight using current speed
             jumpHeight = speed/3f;
